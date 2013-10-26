@@ -1,10 +1,7 @@
 # middleman-casper
 
-A [Middleman 3.x](http://middlemanapp.com) blog project template
-
-[Casper](https://github.com/TryGhost/Casper) is the default theme for
-[Ghost](https://github.com/TryGhost/Ghost). **middleman-capser** is the
-[Casper](https://github.com/TryGhost/Casper) theme for
+The [Casper](https://github.com/TryGhost/Casper) theme
+([Ghost](https://github.com/TryGhost/Ghost)) for
 [Middleman-Blog](http://middlemanapp.com/blogging/).
 
 ## Installation
@@ -47,7 +44,7 @@ For help, see the official [Middleman](http://middlemanapp.com) website.
 * 404
 
 ## Special Thanks
-* [Ghost](https://github.com/TryGhost/Ghost) for
+* [Ghost Foundation](https://github.com/TryGhost/Ghost) for
   [Casper](https://github.com/TryGhost/Casper) 
 
 
