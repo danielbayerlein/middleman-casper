@@ -1,0 +1,29 @@
+%main.content{role: :main}
+  %article.post.tag-getting-started
+    %header.post-header
+      %a#blog-logo{href: '/'}= blog_name
+
+    %span.post-meta
+      %time{datetime: current_article.date.strftime('%Y-%m-%d')}
+        = current_article.date.strftime('%d %b %Y')
+      - if tags?
+        on #{tags}
+
+    %h1.post-title= current_article.title
+
+    %section.post-content= content
+
+    %footer.post-footer
+      - if author?
+        %section.author
+          %h4= author[:name]
+          %p= author[:bio]
+
+      %section.share
+        %h4 Share this post
+        %a.icon-twitter{href: twitter_url, onclick: "window.open(this.href, 'twitter-share', 'width=550,height=235');return false;"}
+          %span.hidden Twitter
+        %a.icon-facebook{href: facebook_url, onclick: "window.open(this.href, 'facebook-share','width=580,height=296');return false;"}
+          %span.hidden Facebook
+        %a.icon-google-plus{href: google_plus_url, onclick: "window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;"}
+          %span.hidden Google+
