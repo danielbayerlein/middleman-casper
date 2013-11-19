@@ -5,11 +5,11 @@ per_page: 6
 
 -# TODO
 -# {{#if @blog.cover}}style="background-image: url({{@blog.cover}})"{{/if}}
-%header#site-head
+%header.site-head
   .vertical
-    #site-head-content.inner
+    .site-head-content.inner
       -# TODO
-      -# = link_to '/', id: 'blog-logo' do
+      -# = link_to '/', class: 'blog-logo' do
       -#   = image_tag '', alt: 'Blog Logo'
       %h1.blog-title= blog_name
       %h2.blog-description= blog_description
