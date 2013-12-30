@@ -2,7 +2,7 @@
 
 The [Casper](https://github.com/TryGhost/Casper) theme
 ([Ghost](https://github.com/TryGhost/Ghost)) for
-[Middleman-Blog](http://middlemanapp.com/blogging/).
+[Middleman-Blog](http://middlemanapp.com/basics/blogging/).
 
 ## Installation
 
@@ -45,7 +45,7 @@ For help, see the official [Middleman](http://middlemanapp.com) website.
 
 ## Special Thanks
 * [Ghost Foundation](https://github.com/TryGhost/Ghost) for
-  [Casper](https://github.com/TryGhost/Casper) 
+  [Casper](https://github.com/TryGhost/Casper)
 
 
 ## Contributing
