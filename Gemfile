@@ -10,7 +10,7 @@ gem 'middleman-livereload', '~> 3.1.0'
 gem 'builder', '~> 3.2.2'
 
 # Code syntax highlighting
-gem 'middleman-syntax', '~> 1.2.1'
+gem 'middleman-syntax', '~> 2.0.0'
 gem 'redcarpet', '~> 3.0.0'
 
 # For "summary"-Helper

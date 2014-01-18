@@ -149,7 +149,7 @@ end
 set :haml, { ugly: true }
 set :markdown_engine, :redcarpet
 set :markdown, fenced_code_blocks: true, smartypants: true
-activate :syntax, linenos: :inline, anchorlinenos: true, linenostart: 2
+activate :syntax, line_numbers: true
 
 # Pretty URLs - http://middlemanapp.com/pretty-urls/
 activate :directory_indexes
