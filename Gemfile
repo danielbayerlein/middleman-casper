@@ -15,4 +15,4 @@ gem 'redcarpet', '~> 3.0.0'
 
 # For "summary"-Helper
 gem 'nokogiri', '~> 1.6.1'
-gem 'sanitize', '~> 2.0.6'
+gem 'sanitize', '~> 2.1.0'
