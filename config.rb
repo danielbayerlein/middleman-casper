@@ -27,11 +27,17 @@ activate :blog do |blog|
   # blog.page_link = "page/:num"
 end
 
+# Required
 set :blog_url, 'http://www.example.com'
 set :blog_name, 'Middleman'
 set :blog_description, 'Makes developing websites simple.'
-set :author_name, ''
-set :author_bio, ''
+set :author_name, 'Middleman'
+set :author_bio, 'Middleman is a static site generator using all the ' \
+                 'shortcuts and tools in modern web development.'
+# Optional
+set :author_locaton, ''
+set :author_website, ''
+set :blog_logo, ''
 
 page '/feed.xml', layout: false
 
@@ -111,15 +117,17 @@ helpers do
     Sanitize.clean(article.summary, whitespace_elements: %w(h1))
   end
 
-  def author?
-    author_name && author_bio
-  end
   def author
-    { name: author_name, bio: author_bio }
+    {
+      bio: author_bio,
+      location: author_locaton,
+      name: author_name,
+      website: author_website
+    }
   end
 
   def tags?(article = current_article)
-    !article.tags.blank?
+    article.tags.present?
   end
   def tags(article = current_article, separator = ' | ')
     article.tags.join(separator)
@@ -129,9 +137,14 @@ helpers do
     URI.join(blog_url, current_article.url)
   end
 
+  def blog_logo?
+    return false if blog_logo.blank?
+    File.exists?(File.join('source', images_dir, blog_logo))
+  end
+
   def twitter_url
-    "http://twitter.com/share?text=#{current_article.title}" \
-      "&url=#{current_article_url}"
+    "https://twitter.com/share?text=#{current_article.title}" \
+      "&amp;url=#{current_article_url}"
   end
   def facebook_url
     "https://www.facebook.com/sharer/sharer.php?u=#{current_article_url}"

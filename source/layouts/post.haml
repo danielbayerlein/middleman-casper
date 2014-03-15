@@ -1,7 +1,11 @@
 %main.content{role: :main}
   %article.post.tag-getting-started
     %header.post-header
-      %a.blog-logo{href: '/'}= blog_name
+      %a.blog-logo{href: '/'}
+        - if blog_logo?
+          = image_tag blog_logo, alt: 'Blog Logo'
+        - else
+          %span.blog-title= blog_name
 
     %span.post-meta
       %time{datetime: current_article.date.strftime('%Y-%m-%d')}
@@ -14,10 +18,16 @@
     %section.post-content= content
 
     %footer.post-footer
-      - if author?
-        %section.author
-          %h4= author[:name]
-          %p= author[:bio]
+      %section.author
+        %h4= author[:name]
+        %p= author[:bio]
+        - if author[:location].present? || author[:website].present?
+          %ul.author-meta.clearfix
+            - if (location = author[:location]).present?
+              %li= location
+            - if (website = author[:website]).present?
+              %li
+                %a{href: website}= website
 
       %section.share
         %h4 Share this post

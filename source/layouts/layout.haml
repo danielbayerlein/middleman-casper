@@ -8,6 +8,7 @@
     %meta{'http-equiv' => 'X-UA-Compatible', content: 'IE=edge'}
     %meta{name: 'HandheldFriendly', content: 'True'}
     %meta{name: 'MobileOptimized', content: 320}
+    = favicon_tag 'images/favicon.ico'
     = stylesheet_link_tag :application
     %link{rel: :stylesheet, type: 'text/css', href: '//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400'}
   %body{class: page_class}
@@ -29,7 +30,9 @@
           &bull; All rights reserved.
         %section.poweredby
           Proudly published with
-          %a.icon-middleman{href: 'http://middlemanapp.com'} Middleman
+          %a{href: 'http://middlemanapp.com'} Middleman
         %section.poweredby
           Casper theme powered by
           %a.icon-ghost{href: 'https://ghost.org'} Ghost
+
+    = javascript_include_tag :application
