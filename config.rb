@@ -130,8 +130,8 @@ helpers do
   end
 
   def twitter_url
-    "http://twitter.com/share?text=#{current_article.title}" \
-      "&url=#{current_article_url}"
+    "https://twitter.com/share?text=#{current_article.title}" \
+      "&amp;url=#{current_article_url}"
   end
   def facebook_url
     "https://www.facebook.com/sharer/sharer.php?u=#{current_article_url}"
