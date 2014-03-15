@@ -1,5 +1,5 @@
 /.bundle
+/.cache
 /build
-/.sass-cache
 .DS_Store
 Gemfile.lock
