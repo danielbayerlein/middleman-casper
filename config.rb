@@ -31,13 +31,13 @@ end
 set :blog_url, 'http://www.example.com'
 set :blog_name, 'Middleman'
 set :blog_description, 'Makes developing websites simple.'
-set :blog_logo, 'logo.png'
 set :author_name, 'Middleman'
 set :author_bio, 'Middleman is a static site generator using all the ' \
                  'shortcuts and tools in modern web development.'
 # Optional
 set :author_locaton, ''
 set :author_website, ''
+set :blog_logo, ''
 
 page '/feed.xml', layout: false
 
@@ -138,6 +138,7 @@ helpers do
   end
 
   def blog_logo?
+    return false if blog_logo.blank?
     File.exists?(File.join('source', images_dir, blog_logo))
   end
 
