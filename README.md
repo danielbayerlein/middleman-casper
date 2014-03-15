@@ -40,7 +40,6 @@ For help, see the official [Middleman](http://middlemanapp.com) website.
 * Blog Cover
 * i18n
 * Cleanup
-* Favicon
 * 404
 
 ## Special Thanks
