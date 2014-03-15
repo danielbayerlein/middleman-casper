@@ -46,7 +46,6 @@ For help, see the official [Middleman](http://middlemanapp.com) website.
 * [Ghost Foundation](https://github.com/TryGhost/Ghost) for
   [Casper](https://github.com/TryGhost/Casper)
 
-
 ## Contributing
 
 1. Fork it
