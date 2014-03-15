@@ -17,7 +17,7 @@ The [Casper](https://github.com/TryGhost/Casper) theme
    $ middleman init blog --template=casper
    ```
 
-3. Change your `blog_url`, `blog_name`, `blog_description`, `author_name` and `author_bio` in `config.rb`.
+3. Change your `blog` and `author` settings in `config.rb`.
 
 ## Usage
 
