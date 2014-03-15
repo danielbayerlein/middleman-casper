@@ -36,7 +36,6 @@ $ middleman build
 For help, see the official [Middleman](http://middlemanapp.com) website.
 
 ## TODO
-* Blog Logo
 * Blog Cover
 * i18n
 * Cleanup

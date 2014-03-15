@@ -8,9 +8,9 @@ per_page: 6
 %header.site-head
   .vertical
     .site-head-content.inner
-      -# TODO
-      -# = link_to '/', class: 'blog-logo' do
-      -#   = image_tag '', alt: 'Blog Logo'
+      - if blog_logo?
+        %a.blog-logo{href: '/'}
+          = image_tag blog_logo, alt: 'Blog Logo'
       %h1.blog-title= blog_name
       %h2.blog-description= blog_description
 
