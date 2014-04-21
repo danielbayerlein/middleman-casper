@@ -39,9 +39,9 @@ set :author_name, 'Middleman'
 set :author_bio, 'Middleman is a static site generator using all the ' \
                  'shortcuts and tools in modern web development.'
 # Optional
-set :author_locaton, ''
-set :author_website, ''
-set :blog_logo, ''
+set :author_locaton, nil
+set :author_website, nil
+set :blog_logo, nil
 
 page '/feed.xml', layout: false
 
@@ -83,7 +83,16 @@ page '/feed.xml', layout: false
 # activate :automatic_image_sizes
 
 # Reload the browser automatically whenever files change
-# activate :livereload
+activate :livereload
+
+# Pretty URLs - http://middlemanapp.com/pretty-urls/
+activate :directory_indexes
+
+# Middleman-Syntax - https://github.com/middleman/middleman-syntax
+set :haml, { ugly: true }
+set :markdown_engine, :redcarpet
+set :markdown, fenced_code_blocks: true, smartypants: true
+activate :syntax, line_numbers: true
 
 # Methods defined in the helpers block are available in templates
 # helpers do
@@ -160,18 +169,6 @@ helpers do
   end
 end
 
-# Middleman-Syntax - https://github.com/middleman/middleman-syntax
-set :haml, { ugly: true }
-set :markdown_engine, :redcarpet
-set :markdown, fenced_code_blocks: true, smartypants: true
-activate :syntax, line_numbers: true
-
-# Pretty URLs - http://middlemanapp.com/pretty-urls/
-activate :directory_indexes
-
-# LiveReload - http://middlemanapp.com/livereload/
-activate :livereload
-
 set :css_dir, 'stylesheets'
 
 set :js_dir, 'javascripts'
@@ -192,11 +189,6 @@ configure :build do
   # Use relative URLs
   # activate :relative_assets
 
-  # Compress PNGs after build
-  # First: gem install middleman-smusher
-  # require "middleman-smusher"
-  # activate :smusher
-
   # Or use a different image path
-  # set :http_path, "/Content/images/"
+  # set :http_prefix, "/Content/images/"
 end
