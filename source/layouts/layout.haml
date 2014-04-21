@@ -8,6 +8,7 @@
     %meta{'http-equiv' => 'X-UA-Compatible', content: 'IE=edge'}
     %meta{name: 'HandheldFriendly', content: 'True'}
     %meta{name: 'MobileOptimized', content: 320}
+    = feed_tag :atom, "#{blog.options.prefix.to_s}/feed.xml", title: "Atom Feed"
     = favicon_tag 'images/favicon.ico'
     = stylesheet_link_tag :application
     %link{rel: :stylesheet, type: 'text/css', href: '//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400'}
