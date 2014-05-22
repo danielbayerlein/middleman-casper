@@ -11,8 +11,8 @@ gem 'builder', '~> 3.2.2'
 
 # Code syntax highlighting
 gem 'middleman-syntax', '~> 2.0.0'
-gem 'redcarpet', '~> 3.1.1'
+gem 'redcarpet', '~> 3.1.2'
 
 # For "summary"-Helper
-gem 'nokogiri', '~> 1.6.1'
+gem 'nokogiri', '~> 1.6.2.1'
 gem 'sanitize', '~> 2.1.0'
