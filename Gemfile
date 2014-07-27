@@ -14,5 +14,5 @@ gem 'middleman-syntax', '~> 2.0.0'
 gem 'redcarpet', '~> 3.1.2'
 
 # For "summary"-Helper
-gem 'nokogiri', '~> 1.6.2.1'
-gem 'sanitize', '~> 2.1.0'
+gem 'nokogiri', '~> 1.6.3.1'
+gem 'sanitize', '~> 3.0.0'
