@@ -1,5 +1,7 @@
 # middleman-casper
 
+[![Casper Version](https://img.shields.io/badge/Casper-1.1.3-brightgreen.svg?style=flat)](https://github.com/TryGhost/Casper)
+
 The [Casper](https://github.com/TryGhost/Casper) theme
 ([Ghost](https://github.com/TryGhost/Ghost)) for
 [Middleman-Blog](http://middlemanapp.com/basics/blogging/).
