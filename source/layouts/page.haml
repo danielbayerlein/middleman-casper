@@ -1,0 +1,11 @@
+= wrap_layout :layout do
+  %header.main-header.post-head{cover}
+    %nav.main-nav.clearfix{class: cover? ? 'overlay' : nil}
+      %a.back-button.icon-arrow-left{href: home_path} Home
+      %a.subscribe-button.icon-feed{href: feed_path} Subscribe
+
+  %main.content{role: :main}
+    %article.post
+      %header.post-header
+        %h1.post-title= current_page.data.title
+      %section.post-content= yield

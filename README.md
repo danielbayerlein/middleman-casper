@@ -38,7 +38,6 @@ $ middleman build
 For help, see the official [Middleman](http://middlemanapp.com) website.
 
 ## TODO
-* Page Template
 * i18n
 * Cleanup
 * 404
