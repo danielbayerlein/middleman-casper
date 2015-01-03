@@ -19,7 +19,7 @@ The [Casper](https://github.com/TryGhost/Casper) theme
    $ middleman init blog --template=casper
    ```
 
-3. Change your `blog` and `author` settings in `config.rb`.
+3. Change the `casper` settings in `config.rb`.
 
 ## Usage
 
@@ -37,12 +37,59 @@ $ middleman build
 
 For help, see the official [Middleman](http://middlemanapp.com) website.
 
+### Logo
+
+Configurable in *config.rb*:
+
+```ruby
+set :casper, {
+  ...
+  blog: {
+    logo: 'my-awesome-blog-logo.png' # sources/images/my-awesome-blog-logo.png
+  }
+  ...
+}
+```
+
+### Pages
+
+Content of *example.html.markdown*:
+
+```markdown
+---
+title: Example
+layout: page
+---
+
+Welcome!
+
+```
+
+### Cover
+
+Covers are availible in pages and articles. Content of *example.html.markdown*:
+
+```markdown
+---
+title: Example
+layout: page
+cover: my-awesome-blog-cover.png # sources/images/my-awesome-blog-logo.png
+---
+
+Welcome!
+
+```
+
 ## TODO
+
+* Tag pages
+* Author page
+* Sitemap.xml
 * i18n
-* Cleanup
 * 404
 
 ## Special Thanks
+
 * [Ghost Foundation](https://github.com/TryGhost/Ghost) for
   [Casper](https://github.com/TryGhost/Casper)
 
