@@ -56,6 +56,8 @@ ready do
       @articles = articles[0..5]
     end
   end
+
+  proxy "/author/#{blog_author.name.parameterize}.html", 'author.html'
 end
 
 ###
@@ -84,7 +86,7 @@ end
 #   page "/admin/*"
 # end
 
-# Proxy pages (http://middlemanapp.com/dynamic-pages/)
+# Proxy pages (http://middlemanapp.com/basics/dynamic-pages/)
 # proxy "/this-page-has-no-template.html", "/template-file.html", locals: {
 #  which_fake_page: "Rendering a fake page with a local variable" }
 
@@ -98,7 +100,7 @@ end
 # Reload the browser automatically whenever files change
 activate :livereload
 
-# Pretty URLs - http://middlemanapp.com/pretty-urls/
+# Pretty URLs - http://middlemanapp.com/basics/pretty-urls/
 activate :directory_indexes
 
 # Middleman-Syntax - https://github.com/middleman/middleman-syntax

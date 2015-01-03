@@ -82,7 +82,7 @@ Welcome!
 
 ## TODO
 
-* Author page
+* Multiple authors
 * Sitemap.xml
 * i18n
 * 404
