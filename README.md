@@ -65,7 +65,7 @@ Welcome!
 
 ```
 
-### Cover
+### Covers
 
 Covers are availible in pages and articles. Content of *example.html.markdown*:
 
