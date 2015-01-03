@@ -11,7 +11,7 @@ activate :blog do |blog|
   # blog.permalink = "{year}/{month}/{day}/{title}.html"
   # Matcher for blog source files
   blog.sources = "articles/{year}-{month}-{day}-{title}.html"
-  # blog.taglink = "tags/{tag}.html"
+  blog.taglink = "tag/{tag}.html"
   # blog.layout = "layout"
   # blog.summary_separator = /(READMORE)/
   # blog.summary_length = 250
@@ -20,7 +20,7 @@ activate :blog do |blog|
   # blog.day_link = "{year}/{month}/{day}.html"
   # blog.default_extension = ".markdown"
 
-  # blog.tag_template = "tag.html"
+  blog.tag_template = "tag.html"
   # blog.calendar_template = "calendar.html"
 
   # Enable pagination
@@ -48,6 +48,15 @@ set :casper, {
 }
 
 page '/feed.xml', layout: false
+
+ready do
+  blog.tags.each do |tag, articles|
+    page "/tag/#{tag.downcase}/feed.xml", proxy: '/feed.xml', layout: false do
+      @tagname = tag
+      @articles = articles[0..5]
+    end
+  end
+end
 
 ###
 # Compass

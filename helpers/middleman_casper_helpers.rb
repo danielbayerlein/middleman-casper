@@ -5,7 +5,9 @@ require 'digest/md5'
 module MiddlemanCasperHelpers
   def page_title
     title = blog_settings.name.dup
-    if current_page.data.title
+    if is_tag_page?
+      title << ": #{current_resource.metadata[:locals]['tagname']}"
+    elsif current_page.data.title
       title << ": #{current_page.data.title}"
     elsif is_blog_article?
       title << ": #{current_article.title}"
@@ -43,11 +45,19 @@ module MiddlemanCasperHelpers
     OpenStruct.new(casper[:blog])
   end
 
+  def is_tag_page?
+    current_resource.metadata[:locals]['page_type'] == 'tag'
+  end
   def tags?(article = current_article)
     article.tags.present?
   end
   def tags(article = current_article, separator = ', ')
-    article.tags.join(separator)
+    capture_haml do
+      article.tags.each do |tag|
+        haml_tag(:a, tag, href: tag_path(tag))
+        haml_concat(separator) unless article.tags.last == tag
+      end
+    end.gsub("\n", '')
   end
 
   def current_article_url
@@ -85,7 +95,11 @@ module MiddlemanCasperHelpers
   end
 
   def feed_path
-    "#{blog.options.prefix.to_s}/feed.xml"
+    if is_tag_page?
+      "#{current_page.url.to_s}feed.xml"
+    else
+      "#{blog.options.prefix.to_s}/feed.xml"
+    end
   end
   def home_path
     "#{blog.options.prefix.to_s}/"

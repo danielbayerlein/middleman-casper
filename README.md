@@ -82,7 +82,6 @@ Welcome!
 
 ## TODO
 
-* Tag pages
 * Author page
 * Sitemap.xml
 * i18n
