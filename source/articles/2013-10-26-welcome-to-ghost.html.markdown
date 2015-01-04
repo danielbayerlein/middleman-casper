@@ -2,6 +2,7 @@
 title: Welcome to Ghost
 date: 2013-10-26
 tags: Getting Started
+layout: post
 ---
 
 You're in! Nice. We've put together a little post to introduce you to the Ghost

@@ -1,5 +1,3 @@
-require 'sanitize'
-
 ###
 # Blog settings
 ###
@@ -12,8 +10,8 @@ activate :blog do |blog|
 
   # blog.permalink = "{year}/{month}/{day}/{title}.html"
   # Matcher for blog source files
-  # blog.sources = "{year}-{month}-{day}-{title}.html"
-  # blog.taglink = "tags/{tag}.html"
+  blog.sources = "articles/{year}-{month}-{day}-{title}.html"
+  blog.taglink = "tag/{tag}.html"
   # blog.layout = "layout"
   # blog.summary_separator = /(READMORE)/
   # blog.summary_length = 250
@@ -22,7 +20,7 @@ activate :blog do |blog|
   # blog.day_link = "{year}/{month}/{day}.html"
   # blog.default_extension = ".markdown"
 
-  # blog.tag_template = "tag.html"
+  blog.tag_template = "tag.html"
   # blog.calendar_template = "calendar.html"
 
   # Enable pagination
@@ -31,19 +29,36 @@ activate :blog do |blog|
   # blog.page_link = "page/{num}"
 end
 
-# Required
-set :blog_url, 'http://www.example.com'
-set :blog_name, 'Middleman'
-set :blog_description, 'Makes developing websites simple.'
-set :author_name, 'Middleman'
-set :author_bio, 'Middleman is a static site generator using all the ' \
-                 'shortcuts and tools in modern web development.'
-# Optional
-set :author_locaton, nil
-set :author_website, nil
-set :blog_logo, nil
+set :casper, {
+  blog: {
+    url: 'http://www.example.com',
+    name: 'Middleman',
+    description: 'Makes developing websites simple.',
+    date_format: '%d %B %Y',
+    logo: nil # Optional
+  },
+  author: {
+    name: 'Middleman',
+    bio: 'Middleman is a static site generator using all the ' \
+         'shortcuts and tools in modern web development.',
+    location: nil, # Optional
+    website: nil, # Optional
+    gravatar_email: nil # Optional
+  }
+}
 
 page '/feed.xml', layout: false
+
+ready do
+  blog.tags.each do |tag, articles|
+    proxy "/tag/#{tag.downcase.parameterize}/feed.xml", '/feed.xml', layout: false do
+      @tagname = tag
+      @articles = articles[0..5]
+    end
+  end
+
+  proxy "/author/#{blog_author.name.parameterize}.html", '/author.html', ignore: true
+end
 
 ###
 # Compass
@@ -71,7 +86,7 @@ page '/feed.xml', layout: false
 #   page "/admin/*"
 # end
 
-# Proxy pages (http://middlemanapp.com/dynamic-pages/)
+# Proxy pages (http://middlemanapp.com/basics/dynamic-pages/)
 # proxy "/this-page-has-no-template.html", "/template-file.html", locals: {
 #  which_fake_page: "Rendering a fake page with a local variable" }
 
@@ -85,7 +100,7 @@ page '/feed.xml', layout: false
 # Reload the browser automatically whenever files change
 activate :livereload
 
-# Pretty URLs - http://middlemanapp.com/pretty-urls/
+# Pretty URLs - http://middlemanapp.com/basics/pretty-urls/
 activate :directory_indexes
 
 # Middleman-Syntax - https://github.com/middleman/middleman-syntax
@@ -101,79 +116,13 @@ activate :syntax, line_numbers: true
 #   end
 # end
 
-helpers do
-  def page_title
-    title = blog_name.dup
-    if current_page.data.title
-      title << ": #{current_page.data.title}"
-    elsif is_blog_article?
-      title << ": #{current_article.title}"
-    end
-    title
-  end
-
-  def page_description
-    if is_blog_article?
-      Sanitize.clean(current_article.summary(150, '')).strip.gsub(/\s+/, ' ')
-    else
-      blog_description
-    end
-  end
-
-  def page_class
-    is_blog_article? ? 'post-template tag-getting-started' : 'home-template'
-  end
-
-  def summary(article)
-    Sanitize.clean(article.summary, whitespace_elements: %w(h1))
-  end
-
-  def author
-    {
-      bio: author_bio,
-      location: author_locaton,
-      name: author_name,
-      website: author_website
-    }
-  end
-
-  def tags?(article = current_article)
-    article.tags.present?
-  end
-  def tags(article = current_article, separator = ' | ')
-    article.tags.join(separator)
-  end
-
-  def current_article_url
-    URI.join(blog_url, current_article.url)
-  end
-
-  def blog_logo?
-    return false if blog_logo.blank?
-    File.exists?(File.join('source', images_dir, blog_logo))
-  end
-
-  def twitter_url
-    "https://twitter.com/share?text=#{current_article.title}" \
-      "&amp;url=#{current_article_url}"
-  end
-  def facebook_url
-    "https://www.facebook.com/sharer/sharer.php?u=#{current_article_url}"
-  end
-  def google_plus_url
-    "https://plus.google.com/share?url=#{current_article_url}"
-  end
-
-  def feed_path
-    '/feed.xml'
-  end
-end
-
 set :css_dir, 'stylesheets'
 
 set :js_dir, 'javascripts'
 
 set :images_dir, 'images'
+
+set :partials_dir, 'partials'
 
 # Build-specific configuration
 configure :build do

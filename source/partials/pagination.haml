@@ -1,0 +1,12 @@
+- locals = current_resource.metadata[:locals]
+- prev_page = locals['prev_page']
+- page_number = locals['page_number']
+- num_pages = locals['num_pages']
+- next_page = locals['next_page']
+
+%nav.pagination{role: :pagination}
+  - if prev_page
+    = link_to '← Newer Posts', prev_page, class: 'newer-posts'
+  %span.page-number Page #{page_number} of #{num_pages}
+  - if next_page
+    = link_to 'Older Posts →', next_page, class: 'older-posts'

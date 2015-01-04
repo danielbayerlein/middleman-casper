@@ -1,0 +1,29 @@
+---
+pageable: true
+per_page: 6
+---
+
+%header.main-header.author-head{cover}
+  %nav.main-nav.overlay.clearfix
+    %a.back-button.icon-arrow-left{href: home_path} Home
+    %a.subscribe-button.icon-feed{href: feed_path}= blog_author.name
+
+%section.author-profile.inner
+  - if gravatar?
+    %figure.author-image
+      .img{style: "background-image: url(#{gravatar(114)})"}
+        %span.hidden #{blog_author.name}'s Picture
+  %h1.author-title= blog_author.name
+  %h2.author-bio= blog_author.bio
+  .author-meta
+    - if blog_author.location.present?
+      %span.author-location.icon-location= blog_author.location
+    - if blog_author.website.present?
+      %span.author-link.icon-link
+        %a{href: blog_author.website}= blog_author.website
+    %span.author-stats
+      %i.icon-stats
+      = pluralize(blog.articles.count, 'post')
+
+%main#content.content{role: :main}
+  = partial(:page_articles)

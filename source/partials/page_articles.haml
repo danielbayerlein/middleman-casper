@@ -1,0 +1,24 @@
+- paginate = current_resource.metadata[:locals]['paginate']
+
+.extra-pagination.inner
+  = partial(:pagination) if paginate
+
+- page_articles.each_with_index do |article, i|
+  %article.post
+    %header.post-header
+      %h2.post-title= link_to article.title, article
+    %section.post-excerpt
+      %p
+        -# Use article.body if you haven't Nokogiri available
+        -# = article.body
+        = summary(article)
+    %footer.post-meta
+      - if gravatar?
+        %img.author-thumb{src: gravatar(24), alt: 'Author image',nopin: 'nopin'}
+      %a{href: author_path}= blog_author.name
+      - if tags?(article)
+        on #{tags(article)}
+      %time.post-date{datetime: article.date.strftime('%Y-%m-%d')}
+        = article.date.strftime(blog_settings.date_format)
+
+= partial(:pagination) if paginate

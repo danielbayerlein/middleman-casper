@@ -3,37 +3,18 @@ pageable: true
 per_page: 6
 ---
 
--# TODO
--# {{#if @blog.cover}}style="background-image: url({{@blog.cover}})"{{/if}}
-%header.site-head
+%header.main-header{cover}
+  %nav.main-nav.overlay.clearfix
+    - if blog_settings.logo.present?
+      %a.blog-logo{href: home_path}
+        = image_tag blog_settings.logo, alt: 'Blog Logo'
+    %a.subscribe-button.icon-feed{href: feed_path} Subscribe
   .vertical
-    .site-head-content.inner
-      - if blog_logo?
-        %a.blog-logo{href: '/'}
-          = image_tag blog_logo, alt: 'Blog Logo'
-      %h1.blog-title= blog_name
-      %h2.blog-description= blog_description
+    .main-header-content.inner
+      %h1.page-title= blog_settings.name
+      %h2.page-description= blog_settings.description
+  %a.scroll-down.icon-arrow-left{href: '#content', data: {offset: '-45'}}
+    %span.hidden Scroll Down
 
-%main.content{role: :main}
-  - page_articles.each_with_index do |article, i|
-    %article.post.tag-getting-started
-      %header.post-header
-        %span.post-meta
-          %time{datetime: article.date.strftime('%Y-%m-%d')}
-            = article.date.strftime('%d %b %Y')
-          - if tags?(article)
-            on #{tags(article)}
-        %h2.post-title= link_to article.title, article
-      %section.post-excerpt
-        %p
-          -# Use article.body if you haven't Nokogiri available
-          -# = article.body
-          = summary(article)
-
-  - if paginate
-    %nav.pagination{role: :pagination}
-      - if prev_page
-        = link_to '← Newer Posts', prev_page, class: 'newer-posts'
-      %span.page-number Page #{page_number} of #{num_pages}
-      - if next_page
-        = link_to 'Older Posts →', next_page, class: 'older-posts'
+%main#content.content{role: :main}
+  = partial(:page_articles)

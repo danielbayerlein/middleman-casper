@@ -1,0 +1,16 @@
+---
+pageable: true
+per_page: 6
+---
+
+%header.main-header.tag-head{cover}
+  %nav.main-nav.overlay.clearfix
+    %a.back-button.icon-arrow-left{href: home_path} Home
+    %a.subscribe-button.icon-feed{href: feed_path}= tagname
+  .vertical
+    .main-header-content.inner
+      %h1.page-title= tagname
+      %h2.page-description A #{page_articles.count}-post collection
+
+%main#content.content{role: :main}
+  = partial(:page_articles)
