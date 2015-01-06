@@ -49,6 +49,8 @@ set :casper, {
 
 page '/feed.xml', layout: false
 
+ignore '/partials/*'
+
 ready do
   blog.tags.each do |tag, articles|
     proxy "/tag/#{tag.downcase.parameterize}/feed.xml", '/feed.xml', layout: false do
