@@ -12,6 +12,7 @@
         -# Use article.body if you haven't Nokogiri available
         -# = article.body
         = summary(article)
+        = link_to '&raquo;', article, class: 'read-more'
     %footer.post-meta
       - if gravatar?
         %img.author-thumb{src: gravatar(24), alt: 'Author image',nopin: 'nopin'}

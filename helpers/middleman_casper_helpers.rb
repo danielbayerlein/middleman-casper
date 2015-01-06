@@ -34,7 +34,8 @@ module MiddlemanCasperHelpers
   end
 
   def summary(article)
-    Sanitize.fragment(article.summary)
+    summary_length = article.blog_options[:summary_length]
+    Sanitize.fragment(article.summary(summary_length, ''))
   end
 
   def blog_author
