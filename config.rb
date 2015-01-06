@@ -48,6 +48,7 @@ set :casper, {
 }
 
 page '/feed.xml', layout: false
+page '/sitemap.xml', layout: false
 
 ignore '/partials/*'
 

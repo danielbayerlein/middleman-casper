@@ -83,7 +83,6 @@ Welcome!
 ## TODO
 
 * Multiple authors
-* Sitemap.xml
 * i18n
 * 404
 
