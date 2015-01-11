@@ -73,7 +73,7 @@ Covers are availible in pages and articles. Content of *example.html.markdown*:
 ---
 title: Example
 layout: page
-cover: my-awesome-blog-cover.png # sources/images/my-awesome-blog-logo.png
+cover: my-awesome-blog-cover.png # sources/images/my-awesome-blog-cover.png
 ---
 
 Welcome!
