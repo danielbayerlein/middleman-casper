@@ -2,7 +2,7 @@
 # use "https".
 source 'http://rubygems.org'
 
-gem 'middleman', '~> 3.3.7'
+gem 'middleman', '~> 3.3.10'
 gem 'middleman-blog', '~> 3.5.3'
 gem 'middleman-livereload', '~> 3.4.2'
 
@@ -14,5 +14,5 @@ gem 'middleman-syntax', '~> 2.0.0'
 gem 'redcarpet', '~> 3.2.2'
 
 # For "summary"-Helper
-gem 'nokogiri', '~> 1.6.5'
-gem 'sanitize', '~> 3.1.0'
+gem 'nokogiri', '~> 1.6.6.2'
+gem 'sanitize', '~> 3.1.2'
