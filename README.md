@@ -37,6 +37,36 @@ $ middleman build
 
 For help, see the official [Middleman](http://middlemanapp.com) website.
 
+### Author
+
+Configurable in *config.rb*:
+
+```ruby
+set :casper, {
+  ...
+  author: {
+    name: 'Middleman'
+  }
+  ...
+}
+```
+
+### Navigation
+
+Configurable in *config.rb*:
+
+```ruby
+set :casper, {
+  ...
+  navigation: {
+    "Home" => "/",
+    "GitHub" => "https://github.com",
+    "Author" => "/author/middleman/"
+  }
+  ...
+}
+```
+
 ### Logo
 
 Configurable in *config.rb*:
@@ -46,11 +76,6 @@ set :casper, {
   ...
   blog: {
     logo: 'my-awesome-blog-logo.png' # sources/images/my-awesome-blog-logo.png
-  },
-  navigation: {
-    "Home" => "/",
-    "GitHub" => "https://github.com",
-    "Author" => "/author/middleman/"
   }
   ...
 }
