@@ -46,6 +46,10 @@ module MiddlemanCasperHelpers
     OpenStruct.new(casper[:blog])
   end
 
+  def navigation
+    casper[:navigation]
+  end
+
   def is_tag_page?
     current_resource.metadata[:locals]['page_type'] == 'tag'
   end

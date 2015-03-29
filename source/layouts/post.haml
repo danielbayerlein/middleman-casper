@@ -1,8 +1,13 @@
 = wrap_layout :layout do
   %header.main-header.post-head{cover}
     %nav.main-nav.clearfix{class: cover? ? 'overlay' : nil}
-      %a.back-button.icon-arrow-left{href: home_path} Home
-      %a.subscribe-button.icon-feed{href: feed_path} Subscribe
+      - if blog_settings.logo.present?
+        %a.blog-logo{href: home_path}
+          = image_tag blog_settings.logo, alt: 'Blog Logo'
+      - if blog_settings.navigation
+        %a.menu-button{href: '#'}
+          %span.burger &#9776;
+          %span.word Menu
 
   %main.content{role: :main}
     %article.post

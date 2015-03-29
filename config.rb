@@ -35,15 +35,18 @@ set :casper, {
     name: 'Middleman',
     description: 'Makes developing websites simple.',
     date_format: '%d %B %Y',
+    navigation: true,
     logo: nil # Optional
   },
   author: {
     name: 'Middleman',
-    bio: 'Middleman is a static site generator using all the ' \
-         'shortcuts and tools in modern web development.',
+    bio: nil, # Optional
     location: nil, # Optional
     website: nil, # Optional
     gravatar_email: nil # Optional
+  },
+  navigation: {
+    "Home" => "/"
   }
 }
 

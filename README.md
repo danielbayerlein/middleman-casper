@@ -1,6 +1,6 @@
 # middleman-casper
 
-[![Casper Version](https://img.shields.io/badge/Casper-1.1.3-brightgreen.svg?style=flat)](https://github.com/TryGhost/Casper)
+[![Casper Version](https://img.shields.io/badge/Casper-1.1.7-brightgreen.svg?style=flat)](https://github.com/TryGhost/Casper)
 
 The [Casper](https://github.com/TryGhost/Casper) theme
 ([Ghost](https://github.com/TryGhost/Ghost)) for
@@ -46,6 +46,11 @@ set :casper, {
   ...
   blog: {
     logo: 'my-awesome-blog-logo.png' # sources/images/my-awesome-blog-logo.png
+  },
+  navigation: {
+    "Home" => "/",
+    "GitHub" => "https://github.com",
+    "Author" => "/author/middleman/"
   }
   ...
 }

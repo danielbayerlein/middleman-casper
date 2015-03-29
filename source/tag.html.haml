@@ -5,8 +5,13 @@ per_page: 6
 
 %header.main-header.tag-head{cover}
   %nav.main-nav.overlay.clearfix
-    %a.back-button.icon-arrow-left{href: home_path} Home
-    %a.subscribe-button.icon-feed{href: feed_path}= tagname
+    - if blog_settings.logo.present?
+      %a.blog-logo{href: home_path}
+        = image_tag blog_settings.logo, alt: 'Blog Logo'
+    - if blog_settings.navigation
+      %a.menu-button{href: '#'}
+        %span.burger &#9776;
+        %span.word Menu
   .vertical
     .main-header-content.inner
       %h1.page-title= tagname
