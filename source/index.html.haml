@@ -9,8 +9,7 @@ per_page: 6
       %a.blog-logo{href: home_path}
         = image_tag blog_settings.logo, alt: 'Blog Logo'
     - if blog_settings.navigation
-      %a.menu-button{href: '#'}
-        %span.burger &#9776;
+      %a.menu-button.icon-menu{href: '#'}
         %span.word Menu
   .vertical
     .main-header-content.inner
@@ -20,4 +19,5 @@ per_page: 6
     %span.hidden Scroll Down
 
 %main#content.content{role: :main}
-  = partial(:page_articles)
+  = partial(:page_articles,
+            locals: { page_articles: page_articles, paginate: paginate })

@@ -1,5 +1,4 @@
 require 'ostruct'
-require 'sanitize'
 require 'digest/md5'
 
 module MiddlemanCasperHelpers
@@ -17,7 +16,8 @@ module MiddlemanCasperHelpers
 
   def page_description
     if is_blog_article?
-      Sanitize.fragment(current_article.summary(150, '')).strip.gsub(/\s+/, ' ')
+      body = strip_tags(current_article.body).gsub(/\s+/, ' ')
+      truncate(body, length: 147)
     else
       blog_settings.description
     end
@@ -35,7 +35,12 @@ module MiddlemanCasperHelpers
 
   def summary(article)
     summary_length = article.blog_options[:summary_length]
-    Sanitize.fragment(article.summary(summary_length, ''))
+    strip_tags(article.summary(summary_length, ''))
+  end
+
+  def read_next_summary(article, words)
+    body = strip_tags(article.body)
+    truncate_words(body, length: words, omission: '')
   end
 
   def blog_author
@@ -69,15 +74,15 @@ module MiddlemanCasperHelpers
     URI.join(blog_settings.url, current_article.url)
   end
 
-  def cover
-    if (src = current_page.data.cover).present?
+  def cover(page = current_page)
+    if (src = page.data.cover).present?
       { style: "background-image: url(#{image_path(src)})" }
     else
       { class: 'no-cover' }
     end
   end
-  def cover?
-    current_page.data.cover.present?
+  def cover?(page = current_page)
+    page.data.cover.present?
   end
 
   def gravatar(size = 68)
