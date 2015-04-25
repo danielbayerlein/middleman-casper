@@ -17,4 +17,5 @@ per_page: 6
       %h2.page-description A #{page_articles.count}-post collection
 
 %main#content.content{role: :main}
-  = partial(:page_articles)
+  = partial(:page_articles,
+            locals: { page_articles: page_articles, paginate: paginate })

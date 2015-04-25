@@ -1,9 +1,7 @@
-- paginate = current_resource.metadata[:locals]['paginate']
-
 .extra-pagination.inner
   = partial(:pagination) if paginate
 
-- page_articles.each_with_index do |article, i|
+- page_articles.each do |article|
   %article.post
     %header.post-header
       %h2.post-title= link_to article.title, article
@@ -13,7 +11,7 @@
         = link_to '&raquo;', article, class: 'read-more'
     %footer.post-meta
       - if gravatar?
-        %img.author-thumb{src: gravatar(24), alt: 'Author image',nopin: 'nopin'}
+        %img.author-thumb{src: gravatar(24), alt: 'Author image', nopin: 'nopin'}
       %a{href: author_path}= blog_author.name
       - if tags?(article)
         on #{tags(article)}

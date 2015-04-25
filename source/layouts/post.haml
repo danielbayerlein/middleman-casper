@@ -53,3 +53,17 @@
             %span.hidden Facebook
           %a.icon-google-plus{href: google_plus_url, onclick: "window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;"}
             %span.hidden Google+
+
+  %aside.read-next
+    - if prev_article = current_article.previous_article
+      - attributes = { href: prev_article.url }.merge(cover(prev_article))
+      %a.read-next-story{attributes}
+        %section.post
+          %h2= prev_article.title
+          %p #{read_next_summary(prev_article, 19)}&hellip;
+    - if next_article = current_article.next_article
+      - attributes = { href: next_article.url }.merge(cover(next_article))
+      %a.read-next-story.prev{attributes}
+        %section.post
+          %h2= next_article.title
+          %p #{read_next_summary(next_article, 19)}&hellip;
