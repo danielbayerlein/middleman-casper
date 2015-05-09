@@ -21,6 +21,13 @@ The [Casper](https://github.com/TryGhost/Casper) theme
 
 3. Change the `casper` settings in `config.rb`.
 
+## Update
+
+```bash
+$ git remote add middleman-casper https://github.com/danielbayerlein/middleman-casper.git
+$ git pull middleman-casper master
+```
+
 ## Usage
 
 Start a local web server running at `http://localhost:4567/` with:
