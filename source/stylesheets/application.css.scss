@@ -2,8 +2,9 @@
 @import 'syntax';
 
 // Overwrite some styles from casper.css
-pre {
-  background: transparent;
-  border-style: none;
-  padding: initial;
+pre.highlight {
+  word-wrap: normal;
+  code {
+    white-space: pre;
+  }
 }

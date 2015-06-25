@@ -113,7 +113,7 @@ activate :directory_indexes
 set :haml, { ugly: true }
 set :markdown_engine, :redcarpet
 set :markdown, fenced_code_blocks: true, smartypants: true
-activate :syntax, line_numbers: true
+activate :syntax, line_numbers: false
 
 # Methods defined in the helpers block are available in templates
 # helpers do
