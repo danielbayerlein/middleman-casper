@@ -43,7 +43,8 @@ set :casper, {
     bio: nil, # Optional
     location: nil, # Optional
     website: nil, # Optional
-    gravatar_email: nil # Optional
+    gravatar_email: nil, # Optional
+    twitter: nil # Optional
   },
   navigation: {
     "Home" => "/"

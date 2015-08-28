@@ -117,4 +117,24 @@ module MiddlemanCasperHelpers
   def author_path
     "#{blog.options.prefix.to_s}/author/#{blog_author.name.parameterize}/"
   end
+
+  def og_type
+    if is_blog_article?
+      'article'
+    else
+      'website'
+    end
+  end
+
+  def og_title
+    if current_page.data.title
+      current_page.data.title
+    elsif is_tag_page?
+      current_resource.metadata[:locals]['tagname']
+    elsif is_blog_article?
+      current_article.title
+    else
+      nil
+    end
+  end
 end
