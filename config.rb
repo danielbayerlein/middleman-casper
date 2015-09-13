@@ -43,7 +43,8 @@ set :casper, {
     bio: nil, # Optional
     location: nil, # Optional
     website: nil, # Optional
-    gravatar_email: nil # Optional
+    gravatar_email: nil, # Optional
+    twitter: nil # Optional
   },
   navigation: {
     "Home" => "/"
@@ -112,7 +113,7 @@ activate :directory_indexes
 # Middleman-Syntax - https://github.com/middleman/middleman-syntax
 set :haml, { ugly: true }
 set :markdown_engine, :redcarpet
-set :markdown, fenced_code_blocks: true, smartypants: true
+set :markdown, fenced_code_blocks: true, smartypants: true, footnotes: true, link_attributes: { rel: 'nofollow' }, tables: true
 activate :syntax, line_numbers: false
 
 # Methods defined in the helpers block are available in templates

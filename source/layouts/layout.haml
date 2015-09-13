@@ -7,6 +7,30 @@
     %meta{name: :viewport, content: 'width=device-width, initial-scale=1.0'}
     %meta{'http-equiv' => 'X-UA-Compatible', content: 'IE=edge'}
     %meta{name: 'HandheldFriendly', content: 'True'}
+
+    -# Open Graph Tags
+    %meta{property: "og:site_name", content: blog_settings.name}
+    %meta{property: "og:type", content: og_type}
+    - if og_title.present?
+      %meta{property: "og:title", content: og_title}
+    %meta{property: "og:description", content: page_description}
+    %meta{property: "og:url", content: URI.join(blog_settings.url, current_page.url)}
+    - if cover?
+      %meta{property: "og:image", content: URI.join(blog_settings.url, image_path(current_page.data.cover))}
+    - if is_blog_article?
+      %meta{property: "article:published_time", content: current_article.date.strftime('%Y-%m-%d')}
+
+    -# Twitter Card Tags
+    %meta{name: "twitter:card", content: "summary"}
+    - if blog_author.twitter.present?
+      %meta{name: "twitter:site", content: blog_author.twitter}
+    - if twitter_title.present?
+      %meta{name: "twitter:title", content: twitter_title}
+    %meta{name: "twitter:description", content: page_description}
+    %meta{name: "twitter:url", content: URI.join(blog_settings.url, current_page.url)}
+    - if cover?
+      %meta{name: "twitter:image:src", content: URI.join(blog_settings.url, image_path(current_page.data.cover))}
+
     = feed_tag :atom, "#{blog.options.prefix.to_s}/feed.xml", title: "Atom Feed"
     = favicon_tag 'images/favicon.ico'
     = stylesheet_link_tag :application
