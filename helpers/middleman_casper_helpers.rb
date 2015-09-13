@@ -94,7 +94,7 @@ module MiddlemanCasperHelpers
   end
 
   def twitter_url
-    "https://twitter.com/share?text=#{current_article.title}" \
+    "https://twitter.com/intent/tweet?text=#{current_article.title}" \
       "&amp;url=#{current_article_url}"
   end
   def facebook_url
