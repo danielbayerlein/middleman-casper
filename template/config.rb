@@ -1,8 +1,24 @@
 ###
-# Blog settings
+# Page options, layouts, aliases and proxies
 ###
 
-# Time.zone = "UTC"
+# Per-page layout changes:
+#
+# With no layout
+page '/*.xml', layout: false
+page '/*.json', layout: false
+page '/*.txt', layout: false
+
+# With alternative layout
+# page "/path/to/file.html", layout: :otherlayout
+
+# Proxy pages (http://middlemanapp.com/basics/dynamic-pages/)
+# proxy "/this-page-has-no-template.html", "/template-file.html", locals: {
+#  which_fake_page: "Rendering a fake page with a local variable" }
+
+###
+# Helpers
+###
 
 activate :blog do |blog|
   # This will add a prefix to all links, template references and source paths
@@ -11,7 +27,7 @@ activate :blog do |blog|
   # blog.permalink = "{year}/{month}/{day}/{title}.html"
   # Matcher for blog source files
   blog.sources = "articles/{year}-{month}-{day}-{title}.html"
-  blog.taglink = "tag/{tag}.html"
+  blog.taglink = "tags/{tag}.html"
   # blog.layout = "layout"
   # blog.summary_separator = /(READMORE)/
   # blog.summary_length = 250
@@ -29,6 +45,7 @@ activate :blog do |blog|
   # blog.page_link = "page/{num}"
 end
 
+# TODO: Doesn't work:
 set :casper, {
   blog: {
     url: 'http://www.example.com',
@@ -51,61 +68,45 @@ set :casper, {
   }
 }
 
-page '/feed.xml', layout: false
-page '/sitemap.xml', layout: false
-
 ignore '/partials/*'
 
-ready do
-  blog.tags.each do |tag, articles|
-    proxy "/tag/#{tag.downcase.parameterize}/feed.xml", '/feed.xml', layout: false do
-      @tagname = tag
-      @articles = articles[0..5]
-    end
+def get_tags(resource)
+  if resource.data.tags.is_a? String
+    resource.data.tags.split(',').map(&:strip)
+  else
+    resource.data.tags
   end
-
-  proxy "/author/#{blog_author.name.parameterize}.html", '/author.html', ignore: true
 end
 
-###
-# Compass
-###
+def group_lookup(resource, sum)
+  results = Array(get_tags(resource)).map(&:to_s).map(&:to_sym)
 
-# Change Compass configuration
-# compass_config do |config|
-#   config.output_style = :compact
-# end
+  results.each do |k|
+    sum[k] ||= []
+    sum[k] << resource
+  end
+end
 
-###
-# Page options, layouts, aliases and proxies
-###
+tags = resources
+  .select { |resource| resource.data.tags }
+  .each_with_object({}, &method(:group_lookup))
 
-# Per-page layout changes:
-#
-# With no layout
-# page "/path/to/file.html", layout: false
-#
-# With alternative layout
-# page "/path/to/file.html", layout: :otherlayout
-#
-# A path which all have the same layout
-# with_layout :admin do
-#   page "/admin/*"
-# end
+tags.each do |tag, articles|
+  proxy "/tag/#{tag.downcase.to_s.parameterize}/feed.xml", '/feed.xml', layout: false do
+    # TODO: Use "locals":
+    #       , locals: { articles: articles }
+    @tagname = tag
+    @articles = articles[0..5]
+  end
+end
 
-# Proxy pages (http://middlemanapp.com/basics/dynamic-pages/)
-# proxy "/this-page-has-no-template.html", "/template-file.html", locals: {
-#  which_fake_page: "Rendering a fake page with a local variable" }
-
-###
-# Helpers
-###
-
-# Automatic image dimensions on image_tag helper
-# activate :automatic_image_sizes
+# TODO: Author pages doesn't work:
+# proxy "/author/#{blog_author.name.parameterize}.html", '/author.html', ignore: true
 
 # Reload the browser automatically whenever files change
-activate :livereload
+configure :development do
+  activate :livereload
+end
 
 # Pretty URLs - http://middlemanapp.com/basics/pretty-urls/
 activate :directory_indexes
@@ -123,17 +124,9 @@ activate :syntax, line_numbers: false
 #   end
 # end
 
-set :css_dir, 'stylesheets'
-
-set :js_dir, 'javascripts'
-
-set :images_dir, 'images'
-
-set :partials_dir, 'partials'
-
 # Build-specific configuration
 configure :build do
-  # For example, change the Compass output style for deployment
+  # Minify CSS on build
   # activate :minify_css
 
   # Minify Javascript on build
@@ -144,7 +137,4 @@ configure :build do
 
   # Use relative URLs
   # activate :relative_assets
-
-  # Or use a different image path
-  # set :http_prefix, "/Content/images/"
 end
