@@ -1,25 +1,20 @@
 # middleman-casper
 
-[![Casper Version](https://img.shields.io/badge/Casper-1.2.5-brightgreen.svg?style=flat)](https://github.com/TryGhost/Casper)
+[![Casper Version](https://img.shields.io/badge/Casper-1.2.6-brightgreen.svg?style=flat)](https://github.com/TryGhost/Casper)
 
 The [Casper](https://github.com/TryGhost/Casper) theme
 ([Ghost](https://github.com/TryGhost/Ghost)) for
-[Middleman-Blog](http://middlemanapp.com/basics/blogging/).
+[Middleman-Blog](http://middlemanapp.com/basics/blogging/) v4.0.
 
 ## Installation
 
-1. Clone **middleman-casper** into `~/.middleman`.
-   You will need to create this directory if it doesn't exist.
-   ```bash
-   $ git clone https://github.com/danielbayerlein/middleman-casper.git ~/.middleman/casper
-   ```
+1. Create a new project with the template:
 
-2. Create a new project with the template:
-   ```bash
-   $ middleman init blog --template=casper
-   ```
+  ```bash
+  $ middleman init -T danielbayerlein/middleman-casper MY_PROJECT_FOLDER
+  ```
 
-3. Change the `casper` settings in `config.rb`.
+2. Change the `casper` settings in `config.rb`.
 
 ## Usage
 
@@ -42,7 +37,7 @@ For help, see the official [Middleman](http://middlemanapp.com) website.
 Configurable in *config.rb*:
 
 ```ruby
-set :casper, {
+config[:casper] = {
   ...
   author: {
     name: 'Middleman'
@@ -56,7 +51,7 @@ set :casper, {
 Configurable in *config.rb*:
 
 ```ruby
-set :casper, {
+config[:casper] = {
   ...
   navigation: {
     "Home" => "/",
@@ -72,7 +67,7 @@ set :casper, {
 Configurable in *config.rb*:
 
 ```ruby
-set :casper, {
+config[:casper] = {
   ...
   blog: {
     logo: 'my-awesome-blog-logo.png' # sources/images/my-awesome-blog-logo.png
@@ -108,13 +103,6 @@ cover: my-awesome-blog-cover.png # sources/images/my-awesome-blog-cover.png
 
 Welcome!
 
-```
-
-## Update middleman-casper to the latest version
-
-```bash
-$ git remote add middleman-casper https://github.com/danielbayerlein/middleman-casper.git
-$ git pull middleman-casper master
 ```
 
 ## Special Thanks

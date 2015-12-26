@@ -19,5 +19,5 @@ per_page: 6
     %span.hidden Scroll Down
 
 %main#content.content{role: :main}
-  = partial(:page_articles,
+  = partial('shared/page_articles',
             locals: { page_articles: page_articles, paginate: paginate })

@@ -1,5 +1,5 @@
 .extra-pagination.inner
-  = partial(:pagination) if paginate
+  = partial('shared/pagination') if paginate
 
 - page_articles.each do |article|
   %article.post
@@ -18,4 +18,4 @@
       %time.post-date{datetime: article.date.strftime('%Y-%m-%d')}
         = article.date.strftime(blog_settings.date_format)
 
-= partial(:pagination) if paginate
+= partial('shared/pagination') if paginate

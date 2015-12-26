@@ -1,52 +1,8 @@
 ###
-# Page options, layouts, aliases and proxies
+# middleman-casper configuration
 ###
 
-# Per-page layout changes:
-#
-# With no layout
-page '/*.xml', layout: false
-page '/*.json', layout: false
-page '/*.txt', layout: false
-
-# With alternative layout
-# page "/path/to/file.html", layout: :otherlayout
-
-# Proxy pages (http://middlemanapp.com/basics/dynamic-pages/)
-# proxy "/this-page-has-no-template.html", "/template-file.html", locals: {
-#  which_fake_page: "Rendering a fake page with a local variable" }
-
-###
-# Helpers
-###
-
-activate :blog do |blog|
-  # This will add a prefix to all links, template references and source paths
-  # blog.prefix = "blog"
-
-  # blog.permalink = "{year}/{month}/{day}/{title}.html"
-  # Matcher for blog source files
-  blog.sources = "articles/{year}-{month}-{day}-{title}.html"
-  blog.taglink = "tags/{tag}.html"
-  # blog.layout = "layout"
-  # blog.summary_separator = /(READMORE)/
-  # blog.summary_length = 250
-  # blog.year_link = "{year}.html"
-  # blog.month_link = "{year}/{month}.html"
-  # blog.day_link = "{year}/{month}/{day}.html"
-  # blog.default_extension = ".markdown"
-
-  blog.tag_template = "tag.html"
-  # blog.calendar_template = "calendar.html"
-
-  # Enable pagination
-  blog.paginate = true
-  # blog.per_page = 10
-  # blog.page_link = "page/{num}"
-end
-
-# TODO: Doesn't work:
-set :casper, {
+config[:casper] = {
   blog: {
     url: 'http://www.example.com',
     name: 'Middleman',
@@ -68,7 +24,23 @@ set :casper, {
   }
 }
 
-ignore '/partials/*'
+###
+# Page options, layouts, aliases and proxies
+###
+
+# Per-page layout changes:
+#
+# With no layout
+page '/*.xml', layout: false
+page '/*.json', layout: false
+page '/*.txt', layout: false
+
+# With alternative layout
+# page "/path/to/file.html", layout: :otherlayout
+
+# Proxy pages (https://middlemanapp.com/advanced/dynamic_pages/)
+# proxy "/this-page-has-no-template.html", "/template-file.html", locals: {
+#  which_fake_page: "Rendering a fake page with a local variable" }
 
 def get_tags(resource)
   if resource.data.tags.is_a? String
@@ -92,29 +64,52 @@ tags = resources
   .each_with_object({}, &method(:group_lookup))
 
 tags.each do |tag, articles|
-  proxy "/tag/#{tag.downcase.to_s.parameterize}/feed.xml", '/feed.xml', layout: false do
-    # TODO: Use "locals":
-    #       , locals: { articles: articles }
-    @tagname = tag
-    @articles = articles[0..5]
-  end
+  proxy "/tag/#{tag.downcase.to_s.parameterize}/feed.xml", '/feed.xml',
+    locals: { tag: tag, articles: articles[0..5] }, layout: false
 end
 
-# TODO: Author pages doesn't work:
-# proxy "/author/#{blog_author.name.parameterize}.html", '/author.html', ignore: true
+proxy "/author/#{config.casper[:author][:name].parameterize}.html",
+  '/author.html', ignore: true
 
-# Reload the browser automatically whenever files change
-configure :development do
-  activate :livereload
+# General configuration
+
+###
+# Helpers
+###
+
+activate :blog do |blog|
+  # This will add a prefix to all links, template references and source paths
+  # blog.prefix = "blog"
+
+  # blog.permalink = "{year}/{month}/{day}/{title}.html"
+  # Matcher for blog source files
+  blog.sources = "articles/{year}-{month}-{day}-{title}.html"
+  blog.taglink = "tag/{tag}.html"
+  # blog.layout = "layout"
+  # blog.summary_separator = /(READMORE)/
+  # blog.summary_length = 250
+  # blog.year_link = "{year}.html"
+  # blog.month_link = "{year}/{month}.html"
+  # blog.day_link = "{year}/{month}/{day}.html"
+  # blog.default_extension = ".markdown"
+
+  blog.tag_template = "tag.html"
+  # blog.calendar_template = "calendar.html"
+
+  # Enable pagination
+  blog.paginate = true
+  # blog.per_page = 10
+  # blog.page_link = "page/{num}"
 end
 
-# Pretty URLs - http://middlemanapp.com/basics/pretty-urls/
+# Pretty URLs - https://middlemanapp.com/advanced/pretty_urls/
 activate :directory_indexes
 
 # Middleman-Syntax - https://github.com/middleman/middleman-syntax
 set :haml, { ugly: true }
 set :markdown_engine, :redcarpet
-set :markdown, fenced_code_blocks: true, smartypants: true, footnotes: true, link_attributes: { rel: 'nofollow' }, tables: true
+set :markdown, fenced_code_blocks: true, smartypants: true, footnotes: true,
+  link_attributes: { rel: 'nofollow' }, tables: true
 activate :syntax, line_numbers: false
 
 # Methods defined in the helpers block are available in templates
@@ -137,4 +132,10 @@ configure :build do
 
   # Use relative URLs
   # activate :relative_assets
+
+  # Ignoring Files
+  ignore 'javascripts/_*'
+  ignore 'javascripts/vendor/*'
+  ignore 'stylesheets/_*'
+  ignore 'stylesheets/vendor/*'
 end

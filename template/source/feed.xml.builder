@@ -1,26 +1,27 @@
-@articles ||= blog.articles[0..5]
-title = settings.casper[:blog][:name]
-subtitle = settings.casper[:blog][:description]
+articles ||= blog.articles[0..5]
+tag ||= nil
+title = config.casper[:blog][:name]
+subtitle = config.casper[:blog][:description]
 
 xml.instruct!
 xml.feed "xmlns" => "http://www.w3.org/2005/Atom" do
-  site_url = settings.casper[:blog][:url]
-  xml.title @tagname.present? ? "#{title}: #{@tagname}" : title
-  xml.subtitle @tagname.present? ? "Posts tagged with #{@tagname}" : subtitle
+  site_url = config.casper[:blog][:url]
+  xml.title tag.present? ? "#{title}: #{tag}" : title
+  xml.subtitle tag.present? ? "Posts tagged with #{tag}" : subtitle
   xml.id URI.join(site_url, blog.options.prefix.to_s)
   xml.link "href" => URI.join(site_url, blog.options.prefix.to_s)
   xml.link "href" => URI.join(site_url, current_page.path), "rel" => "self"
-  xml.updated(blog.articles.first.date.to_time.iso8601) if blog.articles.present?
-  xml.author { xml.name settings.casper[:author][:name] }
+  xml.updated(articles.first.date.to_time.iso8601) if articles.present?
+  xml.author { xml.name config.casper[:author][:name] }
 
-  @articles.each do |article|
+  articles.each do |article|
     xml.entry do
       xml.title article.title
       xml.link "rel" => "alternate", "href" => URI.join(site_url, article.url)
       xml.id URI.join(site_url, article.url)
       xml.published article.date.to_time.iso8601
       xml.updated File.mtime(article.source_file).iso8601
-      xml.author { xml.name settings.casper[:author][:name] }
+      xml.author { xml.name config.casper[:author][:name] }
       xml.summary summary(article), "type" => "html"
     end
   end

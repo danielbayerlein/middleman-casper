@@ -44,15 +44,15 @@ module MiddlemanCasperHelpers
   end
 
   def blog_author
-    OpenStruct.new(casper[:author])
+    OpenStruct.new(config.casper[:author])
   end
 
   def blog_settings
-    OpenStruct.new(casper[:blog])
+    OpenStruct.new(config.casper[:blog])
   end
 
   def navigation
-    casper[:navigation]
+    config.casper[:navigation]
   end
 
   def is_tag_page?
