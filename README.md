@@ -23,13 +23,13 @@ The [Casper](https://github.com/TryGhost/Casper) theme
 Start a local web server running at `http://localhost:4567/` with:
 
 ```bash
-$ middleman server
+$ bundle exec middleman server
 ```
 
 Create a static file with:
 
 ```bash
-$ middleman build
+$ bundle exec middleman build
 ```
 
 For help, see the official [Middleman](http://middlemanapp.com) website.
