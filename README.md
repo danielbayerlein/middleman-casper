@@ -4,7 +4,7 @@
 
 The [Casper](https://github.com/TryGhost/Casper) theme
 ([Ghost](https://github.com/TryGhost/Ghost)) for
-[Middleman-Blog](http://middlemanapp.com/basics/blogging/) v4.0.
+[Middleman-Blog](http://middlemanapp.com/basics/blogging/) v4.x
 
 ![middleman-casper screenshot](./screenshot.png)
 
