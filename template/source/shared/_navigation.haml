@@ -1,12 +1,12 @@
 .nav
-  %h3.nav-title Menu
+  %h3.nav-title= t('navigation.menu')
   %a.nav-close{href: '#'}
-    %span.hidden Close
+    %span.hidden= t('navigation.close')
   %ul
     - navigation.try(:each) do |label, href|
       - css_class = %W(nav-#{label.parameterize})
       - css_class << "nav-current" if current_page.url == href
       %li{class: css_class.join(' '), role: :presentation}
         %a{href: href}= label
-  %a.subscribe-button.icon-feed{href: feed_path} Subscribe
+  %a.subscribe-button.icon-feed{href: feed_path}= t('navigation.subscribe')
 %span.nav-cover

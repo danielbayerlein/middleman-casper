@@ -10,13 +10,13 @@ per_page: 6
         = image_tag blog_settings.logo, alt: blog_settings.name
     - if blog_settings.navigation
       %a.menu-button.icon-menu{href: '#'}
-        %span.word Menu
+        %span.word= t('navigation.menu')
 
 %section.author-profile.inner
   - if gravatar?
     %figure.author-image
       .img{style: "background-image: url(#{gravatar(114)})"}
-        %span.hidden #{blog_author.name}'s Picture
+        %span.hidden= t('author.image', name: blog_author.name)
   %h1.author-title= blog_author.name
   - if blog_author.bio.present?
     %h2.author-bio= blog_author.bio
@@ -28,7 +28,7 @@ per_page: 6
         %a{href: blog_author.website}= blog_author.website
     %span.author-stats
       %i.icon-stats
-      = pluralize(blog.articles.count, 'post')
+      = t('author.post', count: blog.articles.count)
 
 %main#content.content{role: :main}
   = partial('shared/page_articles',

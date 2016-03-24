@@ -6,7 +6,7 @@
           = image_tag blog_settings.logo, alt: blog_settings.name
       - if blog_settings.navigation
         %a.menu-button.icon-menu{href: '#'}
-          %span.word Menu
+          %span.word= t('navigation.menu')
 
   %main.content{role: :main}
     %article.post

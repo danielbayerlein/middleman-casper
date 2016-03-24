@@ -14,7 +14,8 @@
         %img.author-thumb{src: gravatar(24), alt: blog_author.name, nopin: 'nopin'}
       %a{href: author_path}= blog_author.name
       - if tags?(article)
-        on #{tags(article)}
+        = t('post.tags')
+        = tags(article)
       %time.post-date{datetime: article.date.strftime('%Y-%m-%d')}
         = article.date.strftime(blog_settings.date_format)
 

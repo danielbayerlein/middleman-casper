@@ -49,9 +49,9 @@
           = Time.now.year
         %section.poweredby
           -#
-            Proudly published with
+            = t('powered_by.middleman')
             %a{href: 'http://middlemanapp.com'} Middleman
-          Casper theme powered by
+          = t('powered_by.ghost')
           %a{href: 'https://ghost.org'} Ghost
 
     = javascript_include_tag :application

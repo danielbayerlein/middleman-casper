@@ -1,0 +1,26 @@
+---
+en:
+  navigation:
+    menu: "Menu"
+    close: "Close"
+    subscribe: "Subscribe"
+  index:
+    scroll_down: "Scroll Down"
+  tag:
+    description: "A %{count}-post collection"
+  author:
+    image: "%{name}'s Picture"
+    post:
+      one: "%{count} post"
+      other: "%{count} posts"
+    more_posts: "Read <a href=\"%{path}\">more posts</a> by this author."
+  pagination:
+    prev: "Newer Posts"
+    next: "Older Posts"
+    page: "Page %{current} of %{count}"
+  post:
+    share: "Share this post"
+    tags: "on"
+  powered_by:
+    middleman: "Proudly published with"
+    ghost: "Casper theme powered by"

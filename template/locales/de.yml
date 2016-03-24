@@ -1,0 +1,28 @@
+---
+de:
+  navigation:
+    menu: "Menü"
+    close: "Schließen"
+    subscribe: "Abonnieren"
+  index:
+    scroll_down: "Scroll Down"
+  tag:
+    description:
+      one: "Sammlung aus einem Beitrag"
+      other: "Sammlung aus %{count} Beiträgen"
+  author:
+    image: "%{name}'s Bild"
+    post:
+      one: "%{count} Beitrag"
+      other: "%{count} Beiträge"
+    more_posts: "<a href=\"%{path}\">Weitere Beiträge</a> von diesem Autor."
+  pagination:
+    prev: "Neuere Beiträge"
+    next: "Ältere Beiträge"
+    page: "Seite %{current} von %{count}"
+  post:
+    share: "Beitrag teilen"
+    tags: "in"
+  powered_by:
+    middleman: "Veröffentlicht mit"
+    ghost: "Theme \"Casper\" bereitgestellt von"

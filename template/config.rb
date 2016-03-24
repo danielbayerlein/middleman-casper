@@ -112,6 +112,9 @@ set :markdown, fenced_code_blocks: true, smartypants: true, footnotes: true,
   link_attributes: { rel: 'nofollow' }, tables: true
 activate :syntax, line_numbers: false
 
+# Localization - https://middlemanapp.com/advanced/localization/
+activate :i18n
+
 # Methods defined in the helpers block are available in templates
 # helpers do
 #   def some_helper
