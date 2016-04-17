@@ -112,6 +112,9 @@ set :markdown, fenced_code_blocks: true, smartypants: true, footnotes: true,
   link_attributes: { rel: 'nofollow' }, tables: true
 activate :syntax, line_numbers: false
 
+# Middleman-Sprockets - https://github.com/middleman/middleman-sprockets
+activate :sprockets
+
 # Localization - https://middlemanapp.com/advanced/localization/
 activate :i18n
 
