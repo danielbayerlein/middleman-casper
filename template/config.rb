@@ -63,9 +63,9 @@ tags = resources
   .select { |resource| resource.data.tags }
   .each_with_object({}, &method(:group_lookup))
 
-tags.each do |tag, articles|
-  proxy "/tag/#{tag.downcase.to_s.parameterize}/feed.xml", '/feed.xml',
-    locals: { tag: tag, articles: articles[0..5] }, layout: false
+tags.each do |tagname, articles|
+  proxy "/tag/#{tagname.downcase.to_s.parameterize}/feed.xml", '/feed.xml',
+    locals: { tagname: tagname, articles: articles[0..5] }, layout: false
 end
 
 proxy "/author/#{config.casper[:author][:name].parameterize}.html",
