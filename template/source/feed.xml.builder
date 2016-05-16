@@ -1,13 +1,13 @@
 articles ||= blog.articles[0..5]
-tag ||= nil
+tagname ||= nil
 title = config.casper[:blog][:name]
 subtitle = config.casper[:blog][:description]
 
 xml.instruct!
 xml.feed "xmlns" => "http://www.w3.org/2005/Atom" do
   site_url = config.casper[:blog][:url]
-  xml.title tag.present? ? "#{title}: #{tag}" : title
-  xml.subtitle tag.present? ? "Posts tagged with #{tag}" : subtitle
+  xml.title tagname.present? ? "#{title}: #{tagname}" : title
+  xml.subtitle tagname.present? ? "Posts tagged with #{tagname}" : subtitle
   xml.id URI.join(site_url, blog.options.prefix.to_s)
   xml.link "href" => URI.join(site_url, blog.options.prefix.to_s)
   xml.link "href" => URI.join(site_url, current_page.path), "rel" => "self"
