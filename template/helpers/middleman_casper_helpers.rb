@@ -24,10 +24,12 @@ module MiddlemanCasperHelpers
   end
 
   def page_class
-    if is_blog_article? || current_page.data.layout == 'page'
+    if is_blog_article?
       'post-template'
+    elsif current_page.data.layout == 'page'
+      'page-template'
     elsif current_resource.metadata[:locals]['page_number'].to_i > 1
-      'archive-template'
+      'paged'
     else
       'home-template'
     end
