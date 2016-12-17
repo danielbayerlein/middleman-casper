@@ -9,16 +9,16 @@ gem 'wdm', '~> 0.1.1', platforms: [:mswin, :mingw]
 gem 'tzinfo-data', platforms: [:mswin, :mingw, :jruby]
 
 # Middleman Gems
-gem 'middleman', '>= 4.0.0'
-gem 'middleman-blog', '>= 4.0.0'
-gem 'middleman-sprockets', '>= 4.0.0.rc.2'
+gem 'middleman', '~> 4.0'
+gem 'middleman-blog', '~> 4.0'
+gem 'middleman-sprockets', '~> 4.0.0'
 
 # For feed.xml.builder
 gem 'builder', '~> 3.2.2'
 
 # Code syntax highlighting
-gem 'middleman-syntax', '~> 2.1.0'
+gem 'middleman-syntax', '~> 3.0.0'
 gem 'redcarpet', '~> 3.3.4'
 
 # For "summary"-Helper
-gem 'nokogiri', '~> 1.6.7.2'
+gem 'nokogiri', '~> 1.6.8'
