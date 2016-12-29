@@ -4,7 +4,7 @@
 
 The [Casper](https://github.com/TryGhost/Casper) theme
 ([Ghost](https://github.com/TryGhost/Ghost)) for
-[Middleman-Blog](http://middlemanapp.com/basics/blogging/) v4.x
+[Middleman-Blog](https://middlemanapp.com/basics/blogging/) v4.x
 
 ![middleman-casper screenshot](./screenshot.png)
 
@@ -32,7 +32,7 @@ Create a static file with:
 bundle exec middleman build
 ```
 
-For help, see the official [Middleman](http://middlemanapp.com) website.
+For help, see the official [Middleman](https://middlemanapp.com) website.
 
 ### Author
 
