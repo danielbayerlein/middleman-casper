@@ -13,7 +13,7 @@ The [Casper](https://github.com/TryGhost/Casper) theme
 1. Create a new project with the template:
 
   ```bash
-  $ middleman init -T danielbayerlein/middleman-casper MY_PROJECT_FOLDER
+  middleman init -T danielbayerlein/middleman-casper MY_PROJECT_FOLDER
   ```
 
 2. Change the `casper` settings in `config.rb`.
@@ -23,13 +23,13 @@ The [Casper](https://github.com/TryGhost/Casper) theme
 Start a local web server running at `http://localhost:4567/` with:
 
 ```bash
-$ bundle exec middleman server
+bundle exec middleman server
 ```
 
 Create a static file with:
 
 ```bash
-$ bundle exec middleman build
+bundle exec middleman build
 ```
 
 For help, see the official [Middleman](http://middlemanapp.com) website.
