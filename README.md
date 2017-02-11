@@ -6,7 +6,9 @@ The [Casper](https://github.com/TryGhost/Casper) theme
 ([Ghost](https://github.com/TryGhost/Ghost)) for
 [Middleman-Blog](https://middlemanapp.com/basics/blogging/) v4.x
 
-![middleman-casper screenshot](./screenshot.png)
+<p align="center">
+  <img src="./screenshot.png" width="400" alt="middleman-casper screenshot">
+</p>
 
 ## Installation
 
