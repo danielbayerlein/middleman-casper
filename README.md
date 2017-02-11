@@ -1,19 +1,21 @@
 # middleman-casper
 
-[![Casper Version](https://img.shields.io/badge/Casper-1.3.4-brightgreen.svg?style=flat)](https://github.com/TryGhost/Casper)
+[![Casper Version](https://img.shields.io/badge/Casper-1.3.5-brightgreen.svg?style=flat)](https://github.com/TryGhost/Casper)
 
 The [Casper](https://github.com/TryGhost/Casper) theme
 ([Ghost](https://github.com/TryGhost/Ghost)) for
-[Middleman-Blog](http://middlemanapp.com/basics/blogging/) v4.x
+[Middleman-Blog](https://middlemanapp.com/basics/blogging/) v4.x
 
-![middleman-casper screenshot](./screenshot.png)
+<p align="center">
+  <img src="./screenshot.png" width="400" alt="middleman-casper screenshot">
+</p>
 
 ## Installation
 
 1. Create a new project with the template:
 
   ```bash
-  $ middleman init -T danielbayerlein/middleman-casper MY_PROJECT_FOLDER
+  middleman init -T danielbayerlein/middleman-casper MY_PROJECT_FOLDER
   ```
 
 2. Change the `casper` settings in `config.rb`.
@@ -23,16 +25,16 @@ The [Casper](https://github.com/TryGhost/Casper) theme
 Start a local web server running at `http://localhost:4567/` with:
 
 ```bash
-$ bundle exec middleman server
+bundle exec middleman server
 ```
 
 Create a static file with:
 
 ```bash
-$ bundle exec middleman build
+bundle exec middleman build
 ```
 
-For help, see the official [Middleman](http://middlemanapp.com) website.
+For help, see the official [Middleman](https://middlemanapp.com) website.
 
 ### Author
 
@@ -124,7 +126,7 @@ Welcome!
 
 The MIT License (MIT)
 
-Copyright (c) 2016 Daniel Bayerlein
+Copyright (c) 2013-2017 Daniel Bayerlein
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
