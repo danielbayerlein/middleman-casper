@@ -91,7 +91,6 @@ layout: page
 ---
 
 Welcome!
-
 ```
 
 ### Covers
@@ -106,7 +105,6 @@ cover: my-awesome-blog-cover.png # sources/images/my-awesome-blog-cover.png
 ---
 
 Welcome!
-
 ```
 
 ## Special Thanks
