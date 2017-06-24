@@ -55,15 +55,15 @@
             %span.hidden Google+
 
   %aside.read-next
-    - if prev_article = current_article.previous_article
-      - attributes = { href: prev_article.url }.merge(cover(prev_article))
+    - if article_previous = current_article.article_previous
+      - attributes = { href: article_previous.url }.merge(cover(article_previous))
       %a.read-next-story{attributes}
         %section.post
-          %h2= prev_article.title
-          %p #{read_next_summary(prev_article, 19)}&hellip;
-    - if next_article = current_article.next_article
-      - attributes = { href: next_article.url }.merge(cover(next_article))
+          %h2= article_previous.title
+          %p #{read_next_summary(article_previous, 19)}&hellip;
+    - if article_next = current_article.article_next
+      - attributes = { href: article_next.url }.merge(cover(article_next))
       %a.read-next-story.prev{attributes}
         %section.post
-          %h2= next_article.title
-          %p #{read_next_summary(next_article, 19)}&hellip;
+          %h2= article_next.title
+          %p #{read_next_summary(article_next, 19)}&hellip;
